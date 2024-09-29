@@ -4,7 +4,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "npx expo start -c",
+    "start": "npx expo start",
     "android": "npx expo run:android",
     "ios": "yarn fix-xcode-env && npx expo run:ios",
     "eject": "npx expo eject",
