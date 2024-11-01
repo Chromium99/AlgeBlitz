@@ -5,7 +5,7 @@ export default function Tab() {
   return (
     <View style={styles.container}>
       <Text>Tab [Home|Settings]</Text>
-      <Button title="go back" onPress={() => router.push('test')} />
+      <Button title="go back" onPress={() => router.back()} />
     </View>
   )
 }
