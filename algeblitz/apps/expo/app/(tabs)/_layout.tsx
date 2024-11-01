@@ -10,7 +10,7 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: 'blue',
         tabBarStyle: {
-          display: pagesToHide ? 'none' : 'flex',
+          //display: pagesToHide ? 'none' : 'flex',
         },
       }}
     >
