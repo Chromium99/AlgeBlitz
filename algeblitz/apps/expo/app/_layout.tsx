@@ -41,11 +41,11 @@ function RootLayoutNav() {
     <Provider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
-          {/**To show tabs, it must be placed at the beggining of all other screens */}
           <Stack.Screen
             name="(tabs)"
             options={{
-              title: 'someHome',
+              title: '',
+              headerShown: true,
             }}
           />
           <Stack.Screen

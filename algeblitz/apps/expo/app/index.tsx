@@ -5,7 +5,6 @@ import { Button, SafeAreaView } from 'react-native'
 export default function Home() {
   return (
     <SafeAreaView>
-      {/*<HomeScreen /> */}
       <Button title="test-link" onPress={() => router.push('test')} />
     </SafeAreaView>
   )

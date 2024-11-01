@@ -6,7 +6,10 @@ export default function Test() {
   return (
     <SafeAreaView>
       {/*<HomeScreen /> */}
-      <Button title="test-link" onPress={() => router.push('../app/(tabs)/index')} />
+      <Button
+        title="test-link"
+        onPress={() => router.push('../app/(root)/(tabs)/(settings)/settings')}
+      />
     </SafeAreaView>
   )
 }

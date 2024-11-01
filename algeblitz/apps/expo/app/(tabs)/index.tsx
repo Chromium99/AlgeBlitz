@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
+import { router } from 'expo-router'
 
-// all tabs must be wrapped around a Tab() default function
 export default function Tab() {
   return (
     <View style={styles.container}>
       <Text>Tab [Home|Settings]</Text>
+      <Button title="go back" onPress={() => router.push('test')} />
     </View>
   )
 }
