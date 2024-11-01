@@ -11,13 +11,6 @@ export default function Screen() {
         }}
       />
       <HomeScreen />
-      {/*
-      <Stack.Screen
-        options={{
-          title : 
-        }}
-      
-      />*/}
     </Stack>
   )
 }
