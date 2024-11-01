@@ -40,7 +40,37 @@ function RootLayoutNav() {
   return (
     <Provider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack />
+        <Stack>
+          {/**To show tabs, it must be placed at the beggining of all other screens */}
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              title: 'someHome',
+            }}
+          />
+          <Stack.Screen
+            name="index"
+            options={{
+              title: 'Home',
+            }}
+          />
+          <Stack.Screen
+            name="user/[id]"
+            options={{
+              title: 'User',
+              presentation: 'modal',
+              animation: 'slide_from_right',
+              gestureEnabled: true,
+              gestureDirection: 'horizontal',
+            }}
+          />
+          <Stack.Screen
+            name="test"
+            options={{
+              title: 'testPage',
+            }}
+          />
+        </Stack>
         <NativeToast />
       </ThemeProvider>
     </Provider>
