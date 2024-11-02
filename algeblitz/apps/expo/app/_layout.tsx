@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { Provider } from 'app/provider'
 import { NativeToast } from '@my/ui/src/NativeToast'
-import '/Users/ayandas/Desktop/VS_Code_Projects/Alge-Blitz/algeblitz/apps/expo/global.css'
+import '../global.css'
 
 export const unstable_settings = {
   // Ensure that reloading on `/user` keeps a back button present.
