@@ -1,6 +1,6 @@
 import { HomeScreen } from 'app/features/home/screen'
 import { Stack, router } from 'expo-router'
-import { Button, SafeAreaView } from 'react-native'
+import { Button, SafeAreaView, Text } from 'react-native'
 
 export default function Home() {
   return (
@@ -13,6 +13,8 @@ export default function Home() {
      * @SafeAreaView is simply used to ensure content stays within header
      */
     <SafeAreaView>
+      <Text className="text-red-900 mt-20 text-2xl mx-auto">Some Random Text</Text>
+
       <Button title="main-tab" onPress={() => router.push('(tabs)/')} />
       <Button title="settings-tab" onPress={() => router.push('(tabs)/settings')} />
     </SafeAreaView>
