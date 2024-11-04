@@ -3,7 +3,6 @@
 /**
  * @type {import('expo/metro-config')}
  */
-const { withNativeWind } = require('nativewind/metro')
 const { getDefaultConfig } = require('@expo/metro-config')
 const path = require('path')
 
@@ -25,4 +24,4 @@ config.resolver.disableHierarchicalLookup = true
 config.transformer = { ...config.transformer, unstable_allowRequireContext: true }
 config.transformer.minifierPath = require.resolve('metro-minify-terser')
 
-module.exports = withNativeWind(config, { input: './global.css' })
+module.exports = config

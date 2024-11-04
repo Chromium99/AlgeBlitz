@@ -1,4 +1,3 @@
-//import { Slot } from 'expo-router'
 import { useEffect } from 'react'
 import { useColorScheme } from 'react-native'
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
@@ -6,7 +5,6 @@ import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { Provider } from 'app/provider'
 import { NativeToast } from '@my/ui/src/NativeToast'
-import '../global.css'
 
 export const unstable_settings = {
   // Ensure that reloading on `/user` keeps a back button present.
@@ -42,37 +40,7 @@ function RootLayoutNav() {
   return (
     <Provider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen
-            name="(tabs)"
-            options={{
-              title: '',
-              headerShown: true,
-            }}
-          />
-          <Stack.Screen
-            name="index"
-            options={{
-              title: 'Home',
-            }}
-          />
-          <Stack.Screen
-            name="user/[id]"
-            options={{
-              title: 'User',
-              presentation: 'modal',
-              animation: 'slide_from_right',
-              gestureEnabled: true,
-              gestureDirection: 'horizontal',
-            }}
-          />
-          <Stack.Screen
-            name="test"
-            options={{
-              title: 'testPage',
-            }}
-          />
-        </Stack>
+        <Stack />
         <NativeToast />
       </ThemeProvider>
     </Provider>
