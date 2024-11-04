@@ -55,7 +55,7 @@ export function HomeScreen({ pagesMode = false }: { pagesMode?: boolean }) {
         <Separator />
       </YStack>
 
-      <Button {...linkProps}>Link to user</Button>
+      <Button onPress={}>Link to user</Button>
 
       <SheetDemo />
     </YStack>
