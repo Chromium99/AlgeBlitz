@@ -1,19 +1,20 @@
 name: EAS Build
 
-env:
-  WORKING_DIRECTORY: algeblitz/apps/expo  # Specify the working directory
-
 on:
   push:
     branches: [ main ]
     paths:
-      - '${{ env.WORKING_DIRECTORY }}/**'
+      - 'algeblitz/apps/expo/**'
       - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'backend/**'
+      - 'algeblitz/apps/expo/**'
       - '.github/workflows/**'
+
+env:
+  WORKING_DIRECTORY: algeblitz/apps/expo  # Specify the working directory
+
 jobs:
   build:
     name: Install and build
