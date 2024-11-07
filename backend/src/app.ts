@@ -3,6 +3,10 @@ import cors, { CorsOptions } from "cors";
 
 const app: Express = express();
 
+/**
+ * @convention use Cors for making calls via server side
+ * @convention use node fetch for making calls between client and server
+ */
 const corsOptions: CorsOptions = {
   origin: "*", // Allow all origins
 };
