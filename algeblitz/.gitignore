@@ -46,3 +46,6 @@ thumbs.db
 
 # turbo build log
 **/.turbo/*
+
+# coverage reports
+**/coverage
