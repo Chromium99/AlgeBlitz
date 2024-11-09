@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   preset: 'jest-expo',
@@ -13,10 +13,10 @@ module.exports = {
   coverageReporters: ['text', 'lcov'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|webp|svg)$': path.join(__dirname, 'fileMock.js'),
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$': '<rootDir>/src/$1'
   },
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest'
   },
-  rootDir: '.',
-};
+  rootDir: '.'
+}
