@@ -23,6 +23,7 @@ model questionInfoTable {
   questionName String
   userAnswer String? 
   choices String[]
+  correctAnswer String
   
   
 }
