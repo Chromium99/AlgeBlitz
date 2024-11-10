@@ -1,20 +1,27 @@
+
 import express, { Express, Request, Response } from "express";
 import cors, { CorsOptions } from "cors";
+import getQuestion from "./routes/getQuestion";
+import submitAnswer from "./routes/submitAnswer";
+import fastify from "fastify";
+const server=fastify()
 
-const app: Express = express();
 
-const corsOptions: CorsOptions = {
-  origin: "*", // Allow all origins
-};
+server.get('/ping', async (request, reply) => {
+  return 'pong\n'
+})
+server.register(getQuestion)
+server.register(submitAnswer)
 
-app.use(cors(corsOptions));
+server.listen({ port: 3000 }, (err, address) => {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+  console.log(`Server listening at ${address}`)
+})
 
-const port: Number = 3000;
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+
+
