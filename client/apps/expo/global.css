@@ -19,3 +19,33 @@
   --custom-dark-primary: #191919;
   --custom-gray: #a4a4a4;
 }
+
+@layer base {
+  /*Inter Font*/
+  @font-face {
+    font-family: 'inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(client/apps/expo/fonts/Inter-Italic-VariableFont_opsz,wght.ttf) format('ttf');
+  }
+
+  /*bungee font*/
+  @font-face {
+    /* use this for bungee font (i.e. font-bungee)*/
+    font-family: 'bungee';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(client/apps/expo/fonts/BungeeInline-Regular.ttf) format('ttf');
+  }
+
+  /*inter-italic*/
+@font-face {
+  font-family: 'inter-italic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(client/apps/expo/fonts/Inter-Italic-VariableFont_opsz,wght.ttf) format('ttf');
+  }
+}
