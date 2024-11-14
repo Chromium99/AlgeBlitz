@@ -6,19 +6,6 @@ import { useEffect } from 'react'
 
 export default function Home() {
   const router = useRouter()
-  // we will not be using useFonts, we will use tailwindcss instead
-  // locally load and test out the fonts
-  // const [loaded, error] = useFonts({
-  //   test: require('/Users/ayandas/Desktop/VS_Code_Projects/Alge-Blitz/client/apps/expo/fonts/Itim-Regular.ttf'),
-  // })
-
-  // useEffect(() => {
-  //   if (loaded || error) {
-  //     console.log('Error loading font')
-  //   } else if (!error) {
-  //     console.log('Loaded font successfully')
-  //   }
-  // }, [loaded, error])
   return (
     // NOTE : tab views are treated as screens simultaneously (Don't remove)
     /**
@@ -28,7 +15,7 @@ export default function Home() {
      * @dsa routes are implemented using a stack, router.back() pops from the stack, router.push(someRouteVal : string) pushes onto the routing stack
      * @SafeAreaView is simply used to ensure content stays within header
      */
-    <SafeAreaView>
+    <SafeAreaView className="bg-primary-background-color flex-1">
       <Text
         style={{
           fontFamily: 'test',
