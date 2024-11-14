@@ -42,20 +42,20 @@
     "@react-native/codegen/@babel/preset-env": "7.24.1"
   },
   "dependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
     "@babel/runtime": "^7.24.6",
     "@manypkg/cli": "^0.21.4",
     "check-dependency-version-consistency": "^4.1.0",
     "eslint": "^9.3.0",
     "node-gyp": "^10.1.0",
     "prettier": "^3.3.3",
-    "turbo": "^1.13.4",
-    "typescript": "^5.6.2",
-    "@babel/core": "^7.24.6",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/preset-react": "^7.25.9",
-    "@babel/preset-typescript": "^7.26.0",
     "react": "^18.3.1",
-    "react-native": "0.74.2"
+    "react-native": "0.74.2",
+    "turbo": "^1.13.4",
+    "typescript": "^5.6.2"
   },
   "packageManager": "yarn@4.5.0",
   "engines": {
@@ -63,7 +63,6 @@
     "npm": "10.8"
   },
   "devDependencies": {
-    "vitest": "^2.1.1",
     "@jest/globals": "^29.7.0",
     "@testing-library/jest-native": "^5.4.0",
     "@testing-library/react-native": "^12.0.0",
@@ -74,6 +73,7 @@
     "jest": "^29.x.x",
     "jest-expo": "^50.0.0",
     "react-test-renderer": "18.2.0",
-    "ts-jest": "^29.x.x"
+    "ts-jest": "^29.x.x",
+    "vitest": "^2.1.1"
   }
 }
