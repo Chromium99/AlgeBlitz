@@ -1,5 +1,5 @@
 import Constants, { ExecutionEnvironment } from 'expo-constants'
-import { NativeToast as Toast } from './NativeToast'
+import { NativeToast as Toast } from '@my/ui/src/NativeToast'
 
 const isExpo = Constants.executionEnvironment === ExecutionEnvironment.StoreClient
 

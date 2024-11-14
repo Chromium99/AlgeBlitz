@@ -1,1 +1,1 @@
-export * from './tamagui.config'
+export * from '@my/config/src/tamagui.config'
