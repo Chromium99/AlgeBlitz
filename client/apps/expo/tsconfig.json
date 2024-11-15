@@ -1,13 +1,16 @@
 {
   "extends": "../../tsconfig.base",
   "include": [
+    "nativewind-env.d.ts",
     "app/**/*.ts",
     "app/**/*.tsx",
+    "app/components/**/.ts",
+    "app/components/**/.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
   ],
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
     "composite": true,
     "jsx": "react-jsx"
   },

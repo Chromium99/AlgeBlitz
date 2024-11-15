@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       colors: {
         'primary-background-color': 'var(--primary-background-color)',
+        'primary-text-color': 'var(--primary-text-color)',
+        'secondary-text-color': 'var(--secondary-text-color)',
         'custom-black': 'var(--custom-black)',
         'text-color': 'var(--text-color)',
         'custom-yellow': 'var(--custom-yellow)',

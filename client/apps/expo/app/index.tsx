@@ -1,9 +1,8 @@
-import { HomeScreen } from 'app/features/home/screen'
+import React from 'react'
 import { useRouter } from 'expo-router'
-import { Button, SafeAreaView, Text } from 'react-native'
-//import { useFonts } from 'expo-font'
-import { useEffect } from 'react'
-
+import { Button, SafeAreaView, Text, View, Pressable } from 'react-native'
+import { RenderLandingImage } from './components/landingPageComponents/RenderImage'
+import AntDesign from '@expo/vector-icons/AntDesign'
 export default function Home() {
   const router = useRouter()
   return (
@@ -15,20 +14,45 @@ export default function Home() {
      * @dsa routes are implemented using a stack, router.back() pops from the stack, router.push(someRouteVal : string) pushes onto the routing stack
      * @SafeAreaView is simply used to ensure content stays within header
      */
-    <SafeAreaView className="bg-primary-background-color flex-1">
-      <Text
-        style={{
-          fontFamily: 'test',
-        }}
-        // font-inter will help you use the inter font
-        className="font-inter text-red-900 mt-20 text-2xl mx-auto"
-      >
-        Some Random Text
-      </Text>
+    <SafeAreaView className="bg-white flex-1 mx-auto mt-10">
+      <RenderLandingImage />
+      <View className=" flex-col mx-12">
+        {/**flex-col 1 */}
+        <Text
+          style={{ fontFamily: 'bungee-inline' }}
+          className="text-5xl mt-5 mb-10 text-primary-text-color"
+        >
+          ALGEBLITZ
+        </Text>
+        {/**flex-col 2 */}
+        <Text
+          style={{
+            fontFamily: 'bungee-inline',
+          }}
+          // font-inter will help you use the inter font
+          className="text-secondary-text-color opacity-60 text text-2xl"
+        >
+          AN APP TO ENHANCE YOUR KNOWLEDGE OF MATHEMATICS, AND CULTIVATE PASSION.
+        </Text>
+        {/**flex-col 3 */}
+        <Pressable className="bg-black h-20 rounded-3xl mt-10 active:opacity-50">
+          {({ pressed }) => (
+            <Text
+              style={{
+                fontFamily: 'bungee-inline',
+              }}
+              className="text-white mx-auto my-auto text-2xl"
+            >
+              {pressed ? 'Continue' : 'Get Started'}
+              {/*<AntDesign className="relative" name="arrowright" size={24} color="white" />*/}
+            </Text>
+          )}
+        </Pressable>
+      </View>
 
       {/**These errors can be ignored at the moment. */}
-      <Button title="main-tab" onPress={() => router.push('(tabs)/')} />
-      <Button title="settings-tab" onPress={() => router.push('(tabs)/settings')} />
+      {/*<Button title="main-tab" onPress={() => router.push('(tabs)/')} />
+      <Button title="settings-tab" onPress={() => router.push('(tabs)/settings')} /> */}
     </SafeAreaView>
   )
 }

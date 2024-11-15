@@ -8,6 +8,8 @@
 */
 :root {
   --primary-background-color: #e5e5e5;
+  --primary-text-color : #191919;
+  --secondary-text-color : #202020;
   --custom-black: #1e1e1e;
   --text-color: #ffffff;
   --custom-yellow: #fbbc05;
@@ -18,6 +20,7 @@
   --custom-dark-secondary: #202020;
   --custom-dark-primary: #191919;
   --custom-gray: #a4a4a4;
+
 }
 
 @layer base {
