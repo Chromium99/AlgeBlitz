@@ -1,6 +1,3 @@
-
-import express, { Express, Request, Response } from "express";
-import cors, { CorsOptions } from "cors";
 import getQuestion from "./routes/getQuestion";
 import submitAnswer from "./routes/submitAnswer";
 import fastify from "fastify";
