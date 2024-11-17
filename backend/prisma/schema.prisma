@@ -21,7 +21,6 @@ model questionInfoTable {
   type String
   uid String?
   questionName String
-  userAnswer String? 
   choices String[]
   correctAnswer String
   
