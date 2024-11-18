@@ -1,0 +1,102 @@
+name: Algeblitz Server CI/CD
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/**'
+      
+env:
+  WORKING_DIRECTORY: backend  # Specify the working directory
+  AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY_PR: algeblitz/dev         # set this to your Amazon ECR repository name
+  ECS_SERVICE_PR: node-js-app-dev-service                 # set this to your Amazon ECS service name
+  ECS_CLUSTER_PR: DevCluster                 # set this to your Amazon ECS cluster name
+  ECS_TASK_DEFINITION_PR: backend/.aws/devBackend-task-definition.json # set this to the path to your Amazon ECS task definition
+                                               # file, e.g. .aws/task-definition.json
+  CONTAINER_NAME_PR: dev           # set this to the name of the container in the
+                                               # containerDefinitions section of your task definition
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+    strategy:
+      matrix:
+        node-version: [18.x]
+      
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ${{ env.WORKING_DIRECTORY }}/package-lock.json
+    - run: npm ci
+    - run: npm run build --if-present
+  
+  preview-deploy:
+    if: github.event_name == 'pull_request'
+    name: Preview deployment
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker build \
+          --build-arg NODE_ENV=development \
+          --build-arg PORT=5000 \
+          -t $ECR_REGISTRY/$ECR_REPOSITORY_PR:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY_PR:$IMAGE_TAG
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY_PR:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ${{ env.ECS_TASK_DEFINITION_PR }}
+        container-name: ${{ env.CONTAINER_NAME_PR }}
+        image: ${{ steps.build-image.outputs.image }}
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE_PR }}
+        cluster: ${{ env.ECS_CLUSTER_PR }}
+        wait-for-service-stability: true
+        environment-variables: |
+          NODE_ENV=development
+          PORT=5000
+          DATABASE_URL=${{ secrets.DATABASE_URL_DEV }}
