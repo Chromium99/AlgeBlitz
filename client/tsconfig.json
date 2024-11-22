@@ -6,7 +6,13 @@
     "paths": {
       "app/*": ["./packages/app/*"],
       "@my/ui/*": ["./packages/ui/*"]
-    }
+    },
+    "target": "ES6",
+    "module": "commonjs",
+    "jsx": "react",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "extends": "./tsconfig.base",
   "exclude": [
@@ -16,5 +22,6 @@
     "apps/next/out",
     "apps/next/.next",
     "apps/next/.tamagui"
-  ]
+  ],
+  "include": ["**/*.ts", "**/*.tsx"]
 }

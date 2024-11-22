@@ -1,19 +1,10 @@
 {
   "build": {
-    "development": {
+    "development-simulator": {
+      "developmentClient": true,
       "distribution": "internal",
-      "android": {
-        "buildType": "apk"
-      },
       "ios": {
-        "simulator": true,
-        "image": "latest"
-      }
-    },
-    "production": {
-      "distribution": "store",
-      "android": {
-        "buildType": "app-bundle"
+        "simulator": true
       }
     }
   }

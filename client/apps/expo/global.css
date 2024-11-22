@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+* @purpose Define reusbale css
+* @see https://stackoverflow.com/questions/64872861/how-to-use-css-variables-with-tailwind-css
+*/
+:root {
+  --primary-background-color: #e5e5e5;
+  --custom-black: #1e1e1e;
+  --text-color: #ffffff;
+  --custom-yellow: #fbbc05;
+  --custom-green: #10e32e;
+  --custom-peach: #f77666;
+  --custom-blue: #4ea3fb;
+  --custom-purple: #8978f4;
+  --custom-dark-secondary: #202020;
+  --custom-dark-primary: #191919;
+  --custom-gray: #a4a4a4;
+}
