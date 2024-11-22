@@ -47,8 +47,4 @@ thumbs.db
 
 # turbo build log
 **/.turbo/*
-
-# this is for me personally : Ayan, I am not relying on package-lock.json
-# i like to keep yarn.lock as a local copy
-
-yarn.lock
+.yarn
