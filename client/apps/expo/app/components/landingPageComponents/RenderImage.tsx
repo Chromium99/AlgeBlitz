@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { LandingImageComponent } from '../svgComponents/LandingImage'
 import { getDimensions } from 'apps/expo/hooks/getDimensions'
 
