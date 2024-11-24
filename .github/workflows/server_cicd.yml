@@ -74,8 +74,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker build \
-          --build-arg NODE_ENV=development \
-          --build-arg PORT=5000 \
+          -f server/Dockerfile \
           -t $ECR_REGISTRY/$ECR_REPOSITORY_DEV:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY_DEV:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY_DEV:$IMAGE_TAG" >> $GITHUB_OUTPUT

@@ -1,13 +1,9 @@
 # Use Node.js LTS as base image
 FROM node:20-slim AS builder
 
-# Add build arguments
-ARG NODE_ENV
-ARG PORT
-
 # Set them as environment variables
-ENV NODE_ENV=$NODE_ENV
-ENV PORT=$PORT
+ENV NODE_ENV=production
+ENV PORT=3000
 
 # Set working directory
 WORKDIR /app
@@ -47,7 +43,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 
 # Expose the port your Fastify app runs on
-EXPOSE 3000
+EXPOSE $PORT
 
 # Start the application
 CMD ["npm", "start"]
