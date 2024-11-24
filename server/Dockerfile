@@ -4,6 +4,7 @@ FROM node:20-slim AS builder
 # Set them as environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
+ENV DATABASE_URL=postgres://user:password@localhost:5432/db
 
 # Set working directory
 WORKDIR /app
