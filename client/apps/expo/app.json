@@ -1,48 +1,59 @@
 {
-  "expo": {
-    "name": "AlgeBlitz",
-    "slug": "AlgeBlitz",
-    "scheme": "AlgeBlitz",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.yourprojectsname.app"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.yourprojectsname.app"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "6c3501f7-090e-4f25-ba43-ea7e8b603afb"
-      }
-    }
+  "name": "expo-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "npx expo start",
+    "android": "npx expo run:android",
+    "ios": "yarn fix-xcode-env && npx expo run:ios",
+    "eject": "npx expo eject",
+    "fix-xcode-env": "node scripts/fix-xcode-env.mjs"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.24.6",
+    "@expo/config-plugins": "~8.0.4",
+    "@my/ui": "0.0.1",
+    "app": "0.0.0",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "burnt": "^0.12.2",
+    "eas-cli": "^12.6.1",
+    "expo": "^51.0.9",
+    "expo-constants": "~16.0.2",
+    "expo-dev-client": "~4.0.28",
+    "expo-font": "~12.0.10",
+    "expo-image": "~1.13.0",
+    "expo-linear-gradient": "~13.0.2",
+    "expo-linking": "~6.3.1",
+    "expo-router": "~3.5.24",
+    "expo-splash-screen": "^0.29.9",
+    "expo-status-bar": "~1.12.1",
+    "expo-updates": "~0.25.15",
+    "nativewind": "^4.1.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-native": "0.74.2",
+    "react-native-gesture-handler": "~2.16.2",
+    "react-native-reanimated": "^3.16.1",
+    "react-native-safe-area-context": "^4.14.0",
+    "react-native-screens": "~3.31.1",
+    "react-native-svg": "15.3.0",
+    "react-native-web": "~0.19.12",
+    "tailwindcss": "^3.4.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@expo/metro-config": "~0.18.4",
+    "@tamagui/babel-plugin": "^1.112.0",
+    "metro-minify-terser": "^0.80.9",
+    "typescript": "^5.6.2"
+  },
+  "resolutions": {
+    "metro": "0.76.0",
+    "metro-resolver": "0.76.0"
+  },
+  "overrides": {
+    "metro": "0.80.9",
+    "metro-resolver": "0.80.9"
   }
 }
