@@ -1,16 +1,8 @@
 # Use Node.js LTS as base image
 FROM node:20-slim AS builder
 
-# Set them as environment variables
-ENV NODE_ENV=production
-ENV PORT=3000
-ENV DATABASE_URL=postgres://user:password@localhost:5432/db
-
 # Set working directory
-WORKDIR /app
-
-# Install build essentials and OpenSSL for Prisma
-RUN apt-get update -y && apt-get install -y openssl
+WORKDIR /usr/src/app
 
 # Copy package files
 COPY package*.json ./
@@ -25,17 +17,18 @@ RUN npx prisma generate
 # Copy application code
 COPY . .
 
-# Build the application (if using TypeScript)
+# Build the application
 RUN npm run build
 
 # Create production image
 FROM node:20-slim
 
-# Set working directory
-WORKDIR /app
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
 
-# Install OpenSSL for Prisma
-RUN apt-get update -y && apt-get install -y openssl
+# Set working directory
+WORKDIR /usr/src/app
 
 # Copy built application from builder
 COPY --from=builder /app/node_modules ./node_modules
@@ -44,7 +37,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 
 # Expose the port your Fastify app runs on
-EXPOSE $PORT
+EXPOSE 3000
 
 # Start the application
 CMD ["npm", "start"]

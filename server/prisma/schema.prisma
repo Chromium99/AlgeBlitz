@@ -13,26 +13,23 @@ datasource db {
 }
 
 model questionInfoTable {
-  id Int @id @default(autoincrement())
-  pid String?
-  category String
-  difficulty String
-  type String
-  uid String?
-  questionName String
-  choices String[]
+  id            Int      @id @default(autoincrement())
+  pid           String?
+  category      String
+  difficulty    String
+  type          String
+  uid           String?
+  questionName  String
+  choices       String[]
   correctAnswer String
-  
 }
-model problemSolvedTable{
-  id Int @id @default(autoincrement())
-  uid String?
-  pid String?
-  userAnswer String?
-  category     String
-  difficulty   String
-  type         String
-  questionName String
-  choices      String[]
 
+model problemSolvedTable {
+  id           Int     @id @default(autoincrement())
+  uid          String?
+  pid          String?
+  category     String?
+  difficulty   String?
+  type         String?
+  questionName String?
 }
