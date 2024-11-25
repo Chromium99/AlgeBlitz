@@ -15,8 +15,8 @@ env:
   WORKING_DIRECTORY: server  # Specify the working directory
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY_DEV: algeblitz/dev         # set this to your Amazon ECR repository name
-  ECS_SERVICE_DEV: node-js-app-dev-service                 # set this to your Amazon ECS service name
-  ECS_CLUSTER_DEV: DevCluster                 # set this to your Amazon ECS cluster name
+  ECS_SERVICE_DEV: dev-backend                 # set this to your Amazon ECS service name
+  ECS_CLUSTER_DEV: DevCluster-2                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION_DEV: server/.aws/devBackend-task-definition.json # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME_DEV: dev           # set this to the name of the container in the
