@@ -17,21 +17,25 @@ on:
 
 jobs:
 
-    Test:
-        runs-on: ubuntu-latest
-        steps:
+    test:
+      runs-on: ubuntu-latest
 
-            - uses: actions/checkout@v3
+      steps:
+        - uses: actions/checkout@v4
 
-            - uses: actions/setup-node@v3
-              with:
-                node-version: 18
+        - name: Use Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '22'
 
-            - name: Install Dependencies
-              run: yarn set version stable && yarn install
+        - name: Install dependencies
+          run: yarn install
 
-            - name: Build for production
-              run: yarn web:prod
+        - name: Run tests
+          run: yarn test --if-present
+          
+        - name: Build Project Artifacts
+          run: yarn web:prod
 
     Deploy-Preview:
         if: github.event_name == 'pull_request'
