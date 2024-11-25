@@ -12,8 +12,8 @@ module.exports = {
   testEnvironment: 'jsdom',
   globals: {
     'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
+      tsconfig: 'tsconfig.json'
+    }
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testMatch: ['<rootDir>/__tests__/jest_tests/**/*.test.[jt]s?(x)'],
@@ -22,7 +22,7 @@ module.exports = {
     'apps/expo/app/**/*.{js,jsx,ts,tsx}',
     'packages/ui/src/**/*.{js,jsx,ts,tsx}',
     '!**/node_modules/**',
-    '!**/__tests__/**',
+    '!**/__tests__/**'
   ],
   reporters: ['default', '<rootDir>/customReporter.js'],
   coverageDirectory: 'coverage',
@@ -31,16 +31,16 @@ module.exports = {
   moduleNameMapper: {
     '^tamagui$': '<rootDir>/__tests__/__mocks__/tamagui.js',
     '\\.(jpg|jpeg|png|gif|webp|svg)$': path.join(__dirname, 'fileMock.js'),
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$': '<rootDir>/src/$1'
 
     // '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     // '\\.(otf|woff|woff2|ttf|eot)$': '<rootDir>/__mocks__/fileMock.js'
   },
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': 'ts-jest'
   },
-  rootDir: '.',
+  rootDir: '.'
   // setupFiles: ['./jest.setup.js'],
-  
-};
+
+}
