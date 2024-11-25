@@ -19,13 +19,6 @@ export default function App() {
     'inter-variable': require('../fonts/Inter-VariableFont_opsz,wght.ttf'),
     'itim-regular': require('../fonts/Itim-Regular.ttf'),
   })
-  /* NOTE : this never seems to execute, so I left it commented out 
-  useEffect(() => {
-    if (loaded || error) {
-      // TODO : Figure out why this might be causing errors
-      SplashScreen.hideAsync();
-    }
-  }, [loaded, error]) */
 
   if (!loaded && !error) {
     return null
