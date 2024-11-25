@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.24.6",
+    "@clerk/clerk-expo": "^2.3.10",
     "@expo/config-plugins": "~8.0.4",
     "@my/ui": "0.0.1",
     "app": "0.0.0",
