@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "app/*": ["./packages/app/*"],
+      "@my/ui/*": ["./packages/ui/*"]
+    },
+    "target": "ES6",
+    "module": "commonjs",
+    "jsx": "react",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "extends": "./tsconfig.base",
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/types",
+    "apps/next/out",
+    "apps/next/.next",
+    "apps/next/.tamagui"
+  ],
+  "include": ["**/*.ts", "**/*.tsx"]
+}
