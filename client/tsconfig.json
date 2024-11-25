@@ -16,7 +16,7 @@
     "types": [
       "jest", 
       "@testing-library/jest-native"
-    ],
+    ]
   },
   "extends": "./tsconfig.base",
   "exclude": [
