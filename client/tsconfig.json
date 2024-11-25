@@ -12,7 +12,11 @@
     "jsx": "react",
     "strict": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "jest", 
+      "@testing-library/jest-native"
+    ],
   },
   "extends": "./tsconfig.base",
   "exclude": [
@@ -23,5 +27,5 @@
     "apps/next/.next",
     "apps/next/.tamagui"
   ],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "__tests__/__mocks__/tamagui.js"]
 }

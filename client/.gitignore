@@ -48,3 +48,5 @@ thumbs.db
 **/.turbo/*
 yarn.lock
 
+# jest coverage reports
+coverage/
