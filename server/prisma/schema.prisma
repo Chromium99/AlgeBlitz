@@ -7,14 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model questionInfoTable {
-  id           Int      @id @default(autoincrement())
-  pid          String?
-  category     String
-  difficulty   String
-  type         String
-  uid          String?
-  questionName String
-  userAnswer   String?
-  choices      String[]
+model sample {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(255)
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model User {
+  id        String  @id @default(cuid())
+  email     String  @unique
+  name      String?
+  createdAt DateTime @default(now())
 }
