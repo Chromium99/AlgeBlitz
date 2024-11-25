@@ -7,6 +7,8 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: dev-db
     ports:
+      # left side : local machine port
+      # right side : docker port
       - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
