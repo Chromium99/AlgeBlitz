@@ -19,7 +19,7 @@ model questionInfoTable {
   category String
   difficulty String
   type String
-  uid String?
+  uid String @unique
   questionName String
   choices String[]
   correctAnswer String
@@ -28,9 +28,31 @@ model questionInfoTable {
 }
 model problemSolvedTable{
   id Int @id @default(autoincrement())
-  uid String?
+  uid String @unique
   pid String?
   userAnswer String?
 
 
+}
+model blitz{
+  id Int @id @default(autoincrement())
+  uid String @unique
+  score String?
+}
+model survival{
+  id Int @id @default(autoincrement())
+  uid String @unique
+  score String?
+
+}
+model rampUp{
+  id Int @id @default(autoincrement())
+  uid String @unique
+  score String?
+}
+
+model puzzle{
+  id Int @id @default(autoincrement())
+  uid String @unique
+  score String?
 }
