@@ -3,8 +3,6 @@ import { Tabs, useSegments } from 'expo-router'
 
 export default function TabLayout() {
   const segments = useSegments()
-
-  const pagesToHide = segments.includes('index')
   return (
     <Tabs
       screenOptions={{

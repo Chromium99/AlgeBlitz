@@ -9,6 +9,9 @@
     ".expo/types/**/*.ts",
     "../expo/hooks/*.ts",
     "expo-env.d.ts",
+    "app/(auth)/*.ts",
+    "app/(auth)/*.tsx",
+    "app/(login)/*.tsx",
   ],
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,

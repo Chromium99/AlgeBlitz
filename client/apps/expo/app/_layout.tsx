@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
 import { RootLayoutNav } from './components/RootLayout'
-import * as SplashScreen from 'expo-splash-screen'
+import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
+import { Slot } from 'expo-router'
 import { useFonts } from 'expo-font'
 import '../global.css'
 
@@ -11,7 +11,6 @@ export const unstable_settings = {
 
 // NOTE : this hangs, logical error
 //SplashScreen.preventAutoHideAsync()
-
 export default function App() {
   const [loaded, error] = useFonts({
     'bungee-inline': require('../fonts/BungeeInline-Regular.ttf'),

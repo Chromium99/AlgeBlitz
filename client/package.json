@@ -47,10 +47,15 @@
     "@babel/preset-react": "^7.25.9",
     "@babel/preset-typescript": "^7.26.0",
     "@babel/runtime": "^7.24.6",
+    "@clerk/clerk-expo": "^2.3.10",
     "@manypkg/cli": "^0.21.4",
     "check-dependency-version-consistency": "^4.1.0",
     "eslint": "^9.3.0",
+    "expo-auth-session": "~5.5.2",
+    "expo-crypto": "~13.0.2",
     "expo-image": "~1.13.0",
+    "expo-secure-store": "^14.0.0",
+    "expo-web-browser": "~13.0.3",
     "node-gyp": "^10.1.0",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
@@ -64,6 +69,7 @@
     "npm": "10.8"
   },
   "devDependencies": {
+    "@clerk/clerk-expo": "^2.3.10",
     "@jest/globals": "^29.7.0",
     "@testing-library/jest-native": "^5.4.0",
     "@testing-library/react-native": "^12.0.0",

@@ -4,17 +4,63 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { Stack } from 'expo-router'
 import { Provider } from 'app/provider'
 import { NativeToast } from '@my/ui/src/NativeToast'
+import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
+import * as SecureStore from 'expo-secure-store'
+
+// define a simple getter for the publishable key
+const getPublisableKey = () => {
+  let publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
+
+  if (!publishableKey) {
+    publishableKey = 'pk_test_ZW5vdWdoLXNlcnZhbC02OC5jbGVyay5hY2NvdW50cy5kZXYk'
+  }
+  return publishableKey
+}
 
 export function RootLayoutNav() {
-  const colorScheme = useColorScheme()
+  // const colorScheme = useColorScheme()
+  // let publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
+
+  // if (!publishableKey) {
+  //   // hardcode the publishable key if it cannot be detected
+  //   // TODO : remove before commiting
+  //   publishableKey = 'pk_test_ZW5vdWdoLXNlcnZhbC02OC5jbGVyay5hY2NvdW50cy5kZXYk'
+  // }
+  const publishableKey = getPublisableKey()
+
+  const tokenCache = {
+    async getToken(key: string) {
+      try {
+        const item = await SecureStore.getItemAsync(key)
+        if (item) {
+          console.log(`${key} was used 🔐 \n`)
+        } else {
+          console.log('No values stored under key: ' + key)
+        }
+        return item
+      } catch (error) {
+        console.error('SecureStore get item error: ', error)
+        await SecureStore.deleteItemAsync(key)
+        return null
+      }
+    },
+    async saveToken(key: string, value: string) {
+      try {
+        return SecureStore.setItemAsync(key, value)
+      } catch (err) {
+        return
+      }
+    },
+  }
 
   return (
-    <Provider>
-      <ThemeProvider
-        // TODO : add ternary condition if we do decide to support light/dark mode later during development
-        // DefaultTheme = Light Mode
-        value={DefaultTheme}
-      >
+    /**
+     * originally this was <Provider></Provider> and <ThemeProvider></ThemeProvider>
+     * now replaced with <ClerkProvider></ClerkProvider> and <ClerkLoaded></ClerkLoaded> as wrappers
+     * for single sign on authentication purposes
+     */
+    <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
+      <ClerkLoaded>
         <Stack
           screenOptions={{
             headerStyle: {
@@ -38,6 +84,20 @@ export function RootLayoutNav() {
             }}
           />
           <Stack.Screen
+            name="(login)"
+            options={{
+              title: '',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="(auth)"
+            options={{
+              title: '',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
             name="user/[id]"
             options={{
               title: 'User',
@@ -55,7 +115,7 @@ export function RootLayoutNav() {
           />
         </Stack>
         <NativeToast />
-      </ThemeProvider>
-    </Provider>
+      </ClerkLoaded>
+    </ClerkProvider>
   )
 }

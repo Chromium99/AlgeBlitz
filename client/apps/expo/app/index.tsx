@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router'
 import { Button, SafeAreaView, Text, View, Pressable } from 'react-native'
 import { RenderLandingImage } from './components/landingPageComponents/RenderImage'
 import AntDesign from '@expo/vector-icons/AntDesign'
+import { router } from 'expo-router'
 export default function Home() {
   const router = useRouter()
   return (
@@ -31,7 +32,10 @@ export default function Home() {
         >
           AN APP TO ENHANCE YOUR KNOWLEDGE OF MATHEMATICS, AND CULTIVATE PASSION.
         </Text>
-        <Pressable className="bg-black h-20 rounded-3xl mt-10 active:opacity-50">
+        <Pressable
+          className="bg-black h-20 rounded-3xl mt-10 active:opacity-50"
+          onPress={() => router.push('/(login)/')}
+        >
           {({ pressed }) => (
             <Text
               style={{
