@@ -34,6 +34,7 @@ export default function Home() {
         </Text>
         <Pressable
           className="bg-black h-20 rounded-3xl mt-10 active:opacity-50"
+          // TODO : look into potential fix for this
           onPress={() => router.push('/(login)/')}
         >
           {({ pressed }) => (
