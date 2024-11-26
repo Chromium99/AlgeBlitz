@@ -1,15 +1,22 @@
 import fastify from "fastify";
-import Clerk, { getAuth } from "@clerk/fastify";
-import "dotenv/config";
+import { clerkPlugin, getAuth } from "@clerk/fastify";
+import * as dotenv from "dotenv";
 
-const app = fastify();
+// Load environment variables
+dotenv.config();
 
-// Initialize Clerk middleware (reads keys from environment variables)
-app.register(Clerk);
+
+console.log('CLERK_SECRET_KEY:', process.env.CLERK_SECRET_KEY || 'Not Found');
+console.log('CLERK_PUBLISHABLE_KEY:', process.env.CLERK_PUBLISHABLE_KEY || 'Not Found');
+
+const app = fastify({ logger: true });
+
+// Register Clerk middleware
+app.register(clerkPlugin);
 
 app.get("/protected-route", async (req, reply) => {
   try {
-    const { userId } = getAuth(req); // Correctly retrieve user ID from Clerk
+    const { userId } = getAuth(req); // Retrieve userId from Clerk
 
     if (!userId) {
       reply.status(401).send({ message: "Unauthorized" });
@@ -23,6 +30,7 @@ app.get("/protected-route", async (req, reply) => {
   }
 });
 
+// Start the server
 app.listen({ port: 3000 }, () => {
   console.log("Server running on http://localhost:3000");
 });

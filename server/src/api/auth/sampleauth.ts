@@ -26,17 +26,46 @@
 // app.listen({ port: 3000 }, () => {
 //   console.log("Server running on http://localhost:3000");
 // });
-import 'dotenv/config'
+
+
+process.on('uncaughtException', (err) => {
+  console.error('Unhandled Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+console.log("CLERK_SECRET_KEY:", process.env.CLERK_SECRET_KEY);
+console.log("CLERK_PUBLISHABLE_KEY:", process.env.CLERK_PUBLISHABLE_KEY);
+console.log("Current working directory:", process.cwd());
+
+console.log("Starting sampleauth.ts...")
+
+import dotenv from 'dotenv';
+dotenv.config({ path: './server/.env'})
+console.log("dotenv loaded.");
+
 import Fastify, { FastifyPluginCallback } from 'fastify'
+console.log("Fastify loaded.");
+
 import { clerkClient, clerkPlugin, getAuth } from '@clerk/fastify'
+console.log("Clerk plugins loaded.");
+
 import prisma from '../../prisma'
+console.log("Prisma loaded.");
+
 import { getAllUsers } from '../../services/userService';
+console.log("User service loaded.");
+
+console.log("Imports loaded Successfully...")
 
 const fastify = Fastify({ logger: true })
 
+console.log("Starting basic Fastify server...");
 
 const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
-  instance.register(clerkPlugin)
+  //instance.register(clerkPlugin)
 
   // protected routes
   instance.get('/protected', async (request, reply) => {
@@ -69,6 +98,7 @@ const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
     reply.send({ message: 'Welcome, Admin.'})
   })
 
+
   // Profile route
 
   interface UpdateProfileBody {
@@ -84,26 +114,40 @@ const protectedRoutes: FastifyPluginCallback = (instance, options, done) => {
     }
 
     // simulated update logic
-    const { email, name } = request.body
+    const { email, name } = request.body;
+
+  // Assuming `name` is a full name, split into firstName and lastName
+  const [firstName, ...lastNameParts] = name.split(' ');
+  const lastName = lastNameParts.join(' '); // Handle cases where last name has spaces
+
+  try {
+    // Update the user with Clerk
     await clerkClient.users.updateUser(userId, {
-      primaryEmailAddressID: email,
-      full_name: name,
-    })
+      primaryEmailAddressID: email, 
+      firstName,
+      lastName,
+    });
 
-    reply.send({ message: 'Profile updated successfully!' })
-  })
-
-  done()
-}
-
+    reply.send({ message: 'Profile updated successfully!' });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    reply.code(500).send({
+      message: 'Error updating profile.',
+      error: (error as Error).message,
+    });
+  }
+});
+done()
+};
 
 // Public Routes
 const publicRoutes: FastifyPluginCallback = (instance, options, done) => {
-  instance.get('/', async (request, reply) => {
+  instance.get('/publicRoute2', async (request, reply) => { //this one is being annoying
     reply.send({ message: 'This is a public route.' });
   });
 
   // fetches users from the database
+  // if we use token auth, we don't need this
   instance.get('/users', async (req, reply) => {
     try {
       const users = await prisma.user.findMany(); // this will use prisma to fetch all users
@@ -116,12 +160,20 @@ const publicRoutes: FastifyPluginCallback = (instance, options, done) => {
     }
   });
 
-  done();
+  instance.get('/inspect-update-fields', async (req, reply) => {
+    const fields = Object.keys(clerkClient.users);
+    reply.send({ message: 'Available methods on Clerk users:', fields });
+  });
+
+  //fastify.register(publicRoutes);
+
+  done()
 };
 
 
 // integrating clerk users with our database. 
 // TODO: need to work on this one a bit and see how we can do this
+// if token auth, we need this one
 const userDatabaseIntegrationRoutes: FastifyPluginCallback = (instance, options, done) => {
   instance.post('/link-user-db', async (request, reply) => {
     const { userId } = getAuth(request);
@@ -182,15 +234,23 @@ fastify.setErrorHandler((error, request, reply) => {
     reply.status(500).send({ message: 'Internal Server Error', error: error.message })
 })
 
+
+// Add a simple test route
+fastify.get('/', async (req, reply) => {
+  return { message: 'Basic test route works!' };
+});
+
 // To Start up the server
 const start = async () => {
   try {
-    await fastify.listen({ port: 8080 })
+    console.log("Starting the Fastify server...");
+    await fastify.listen({ port: 3000 });
+    console.log("Server is running at http://localhost:3000");
   } catch (error) {
-    fastify.log.error(error)
-    process.exit(1)
+    console.error("Error starting the server:", error);
+    fastify.log.error(error);
+    process.exit(1);
   }
-}
+};
 
-
-start()
+start();
