@@ -5,13 +5,12 @@ import { getDimensions } from 'apps/expo/hooks/getDimensions'
 
 export const RenderLandingImage = () => {
   const { windowWidth, windowHeight } = getDimensions()
-  const propData = {
-    width: windowWidth * 0.9,
-    height: windowHeight * 0.52,
-  }
+  const width = windowWidth * 0.9
+  const height = windowHeight * 0.52
+
   return (
-    <View className="shadow-2xl">
-      <LandingImageComponent props={propData} />
+    <View className="shadow-2xl" testID="image-component">
+      <LandingImageComponent width={width} height={height} testID="mock-render-landing-image" />
     </View>
   )
 }

@@ -23,5 +23,5 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Run tests
-        run: yarn test
+      - name: Run Jest tests # including heartbeat UI
+        run: yarn test:jest --verbose --detectOpenHandles # detailed output

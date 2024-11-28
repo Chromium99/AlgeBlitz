@@ -4,11 +4,11 @@ import * as React from 'react'
 import Svg, { G, Path, Defs } from 'react-native-svg'
 
 // reusable SVG component for Landing Image
-export const LandingImageComponent = ({ props }) => (
+export const LandingImageComponent = ({ width, height, ...props }) => (
   <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={props.width}
-    height={props.height}
+    // xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
     fill="none"
     {...props}
   >
