@@ -8,12 +8,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/app.js",
-    "dev": "npx tsx watch src/app.ts",
-    "prisma_push": "npx prisma db push",
-    "prisma_pull": "npx prisma db pull",
-    "prisma_validate": "npx prisma validate",
-    "prisma_version": "npx prisma version",
-    "prisma_debug": "npx prisma debug"
+    "dev": "npx tsx watch src/app.ts"
   },
   "author": "",
   "license": "ISC",
@@ -22,14 +17,14 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.4",
-    "prisma": "5.22.0",
+    "prisma": "^5.22.0",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@prisma/client": "5.22.0",
+    "@prisma/client": "^5.22.0",
     "cors": "^2.8.5",
     "crypto-ts": "^1.0.2",
-    "express": "^4.21.0"
+    "fastify": "^5.1.0"
   }
 }
