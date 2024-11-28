@@ -3,6 +3,7 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,7 +19,7 @@ model questionInfoTable {
   category String
   difficulty String
   type String
-  uid String @unique
+  uid String?
   questionName String
   choices String[]
   correctAnswer String
@@ -26,7 +27,7 @@ model questionInfoTable {
 }
 model problemSolvedTable{
   id Int @id @default(autoincrement())
-  uid String @unique
+  uid String?
   pid String?
   userAnswer String?
   category     String
@@ -35,26 +36,4 @@ model problemSolvedTable{
   questionName String
   choices      String[]
 
-}
-model blitz{
-  id Int @id @default(autoincrement())
-  uid String @unique
-  score String?
-}
-model survival{
-  id Int @id @default(autoincrement())
-  uid String @unique
-  score String?
-
-}
-model rampUp{
-  id Int @id @default(autoincrement())
-  uid String @unique
-  score String?
-}
-
-model puzzle{
-  id Int @id @default(autoincrement())
-  uid String @unique
-  score String?
 }
