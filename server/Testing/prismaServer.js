@@ -4,8 +4,8 @@ const prisma = new PrismaClient();
 //sample data entry information
 
 /**
- * @usage Creates a sample question data in the questionInfoTable in postgres. It also creates a null entry in problemSolvedTable.
- * @returns A console.log saying question is created in the database.
+ * @usage Creates sample data in the questionInfoTable, blitz, rampUp, survival, and puzzle tables in postgres. It also creates a null entry in problemSolvedTable.
+ * @returns A console.log informing that data has been created in the database.
  */
 async function main() {
     const questionInfoTable = await prisma.questionInfoTable.create({
@@ -29,7 +29,32 @@ async function main() {
             userAnswer: null,
         }
     })
-    console.log("New Question Created:", questionInfoTable);
+
+    const blitz=await prisma.blitz.create({
+        data:{
+            uid: "sample1",
+            score:"99",
+        }
+    })
+    const puzzle=await prisma.puzzle.create({
+        data:{
+            uid: "sample1",
+            score:"99",
+        }
+    })
+    const rampUp=await prisma.rampUp.create({
+        data:{
+            uid: "sample1",
+            score:"99",
+        }
+    })
+    const survival=await prisma.survival.create({
+        data:{
+            uid: "sample1",
+            score:"99",
+        }
+    })
+    console.log("Information created");
 }
 
 main()
@@ -41,3 +66,7 @@ main()
         await prisma.$disconnect();
         process.exit(1);
     });
+
+
+
+    
