@@ -4,7 +4,23 @@ module.exports = {
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary-background-color': 'var(--primary-background-color)',
+        'primary-text-color': 'var(--primary-text-color)',
+        'secondary-text-color': 'var(--secondary-text-color)',
+        'custom-black': 'var(--custom-black)',
+        'text-color': 'var(--text-color)',
+        'custom-yellow': 'var(--custom-yellow)',
+        'custom-green': 'var(--custom-green)',
+        'custom-peach': 'var(--custom-peach)',
+        'custom-blue': 'var(--custom-blue)',
+        'custom-purple': 'var(--custom-purple)',
+        'custom-dark-secondary': 'var(--custom-dark-secondary)',
+        'custom-dark-primary': 'var(--custom-dark-primary)',
+        'custom-gray': 'var(--custom-gray)',
+      },
+    },
   },
   plugins: [],
 }
