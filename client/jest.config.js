@@ -2,9 +2,6 @@ const path = require('path')
 
 module.exports = {
   preset: 'jest-expo',
-  // setupFiles: [
-  //   '<rootDir>/setupBeforeEnv.js'
-  // ],
   setupFilesAfterEnv: [
     '<rootDir>/jest.setup.js',
   ],
