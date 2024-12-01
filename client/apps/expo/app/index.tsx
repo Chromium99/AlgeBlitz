@@ -3,6 +3,8 @@ import { useRouter } from 'expo-router'
 import { Button, SafeAreaView, Text, View, Pressable } from 'react-native'
 import { RenderLandingImage } from './components/landingPageComponents/RenderImage'
 import AntDesign from '@expo/vector-icons/AntDesign'
+import { ErrorBoundary } from '../../../__tests__/jest_tests/ErrorBoundary'
+
 export default function Home() {
   const router = useRouter()
   return (
@@ -14,6 +16,7 @@ export default function Home() {
      * @dsa routes are implemented using a stack, router.back() pops from the stack, router.push(someRouteVal : string) pushes onto the routing stack
      * @SafeAreaView is simply used to ensure content stays within header
      */
+    <ErrorBoundary>
     <SafeAreaView className="bg-white flex-1 mx-auto mt-10">
       <RenderLandingImage />
       <View className=" flex-col mx-12">
@@ -45,5 +48,6 @@ export default function Home() {
         </Pressable>
       </View>
     </SafeAreaView>
+    </ErrorBoundary>
   )
 }
