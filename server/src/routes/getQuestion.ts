@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 import { FastifyInstance } from "fastify"; //used for routing in diff files
+import { routes_data } from "../../globals";
 
 /**
  * @usage  The function considers the endpoint '/question/:category/:difficulty/:uid'. When this endpoint is called,
@@ -75,3 +76,5 @@ export default async function getQuestion(server: FastifyInstance) {
     }
   );
 }
+
+routes_data.routes.push(getQuestion);

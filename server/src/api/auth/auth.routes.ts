@@ -15,6 +15,7 @@ authRouter.post("/register", async (req, res, next) => {
       });
       throw new Error("The email is already in use!");
     }
+    // creates new record within the database
     const user = await createUserByEmailAndPassword({
       fooName,
       email,

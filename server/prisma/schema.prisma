@@ -55,3 +55,17 @@ model puzzle {
   uid   String  @unique
   score String?
 }
+
+model User {
+  id             Int      @id @default(autoincrement())
+  name           String
+  email          String
+  role           Role     @default(USER) // set default role to USER
+  password       String
+  time_regisered DateTime
+}
+
+enum Role {
+  USER
+  ADMIN
+}

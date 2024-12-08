@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { FastifyInstance } from "fastify";
+import { routes_data } from "../../globals";
 const prisma = new PrismaClient(); //instantiating prisma so we can manipulate database
 
 /**
@@ -34,3 +35,4 @@ export default async function submitAnswer(server: FastifyInstance) {
     }
   );
 }
+routes_data.routes.push(submitAnswer);

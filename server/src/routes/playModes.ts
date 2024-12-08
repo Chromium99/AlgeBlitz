@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { FastifyInstance } from "fastify";
+import { routes_data } from "../../globals";
 
 const prisma = new PrismaClient();
 
@@ -213,3 +214,5 @@ export default async function playMode(server: FastifyInstance) {
     }
   );
 }
+
+routes_data.routes.push(playMode);
