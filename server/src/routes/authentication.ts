@@ -30,5 +30,5 @@ export default async function handleAuth(server: FastifyInstance) {
     }
   });
 }
-
-routes_data.routes.push(handleAuth);
+routes_data.setRoutes(handleAuth);
+// routes_data.routes.push(handleAuth);

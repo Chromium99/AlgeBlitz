@@ -77,4 +77,4 @@ export default async function getQuestion(server: FastifyInstance) {
   );
 }
 
-routes_data.routes.push(getQuestion);
+// routes_data.routes.push(getQuestion);

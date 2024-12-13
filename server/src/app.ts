@@ -1,11 +1,10 @@
 import fastify from "fastify";
-import { routes_data } from "../globals";
 import { routes } from "./routes/routes";
+
+// routes_data.displayRoutes();
 
 // a bit of functional programming
 // immediate execution of function
-// this is an annoynomous function that will execute when "yarn dev" is run
-// treat this as the "main" function
 (() => {
   const server = fastify();
   const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
@@ -13,12 +12,6 @@ import { routes } from "./routes/routes";
     return `listening at port ${PORT}`;
   });
 
-  // optimized format of code
-  // should trigger an API call to get the current list of routes on global storage
-  console.log(routes_data.routes);
-  // routes_data.routes.forEach((route) => {
-  //   server.register(route);
-  // });
   routes.forEach((route) => {
     server.register(route);
   });
@@ -41,6 +34,3 @@ import { routes } from "./routes/routes";
     console.log(`Server listening at ${address}`);
   });
 })();
-
-// NOTE : the data will be lost if I use it within app.ts
-// console.log(`Current routes_data : ${routes_data.routes}`);

@@ -215,4 +215,5 @@ export default async function playMode(server: FastifyInstance) {
   );
 }
 
-routes_data.routes.push(playMode);
+// adds the data at the end
+routes_data.setRoutes(playMode);

@@ -35,4 +35,4 @@ export default async function submitAnswer(server: FastifyInstance) {
     }
   );
 }
-routes_data.routes.push(submitAnswer);
+routes_data.setRoutes(submitAnswer);
