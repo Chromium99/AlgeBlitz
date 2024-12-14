@@ -2,11 +2,9 @@ import { PrismaClient } from "@prisma/client";
 import fastify, { FastifyInstance } from "fastify";
 import { routes_data } from "../../globals";
 
-// TODO : need to test this
-// decided to implement the routes in this format
-// seems more suitable to have everything in one place within postgres
 export default async function handleAuth(server: FastifyInstance) {
-  server.post("/signup", async (request: any, response: any) => {
+  // Experimental route
+  server.post("/auth/signup_test", async (request: any, response: any) => {
     try {
       const someData = JSON.parse(request.body);
       console.log(`The data is ${someData}`);
@@ -16,7 +14,11 @@ export default async function handleAuth(server: FastifyInstance) {
     }
   });
 
-  server.post("/signin", async (request: any, response: any) => {
+  server.post("/auth/signup", async (request: any, response: any) => {
+    const { name, email, password } = request.body;
+  });
+
+  server.post("/auth/signin", async (request: any, response: any) => {
     try {
       // commented out for now since appropriate migration hasn't been made
       // const result = PrismaClient.User.findOne({
