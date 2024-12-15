@@ -6,12 +6,12 @@ module.exports = function (api) {
       [
         'babel-preset-expo',
         {
-          jsxImportSource: 'nativewind',
-        },
-      ],
+          jsxImportSource: 'nativewind'
+        }
+      ]
     ],
     plugins: [
-      //['nativewind/babel'],
+      // ['nativewind/babel'],
       [
         require.resolve('babel-plugin-module-resolver'),
         {
@@ -19,12 +19,12 @@ module.exports = function (api) {
           alias: {
             // define aliases to shorten the import paths
             app: '../../packages/app',
-            '@my/ui': '../../packages/ui',
+            '@my/ui': '../../packages/ui'
           },
-          extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
-        },
+          extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js']
+        }
       ],
-      //['nativewind/babel'],
+      // ['nativewind/babel'],
       // if you want reanimated support
       // 'react-native-reanimated/plugin',
       ...(process.env.EAS_BUILD_PLATFORM === 'android'
@@ -36,10 +36,10 @@ module.exports = function (api) {
                 components: ['@my/ui', 'tamagui'],
                 config: '../../packages/config/src/tamagui.config.ts',
                 logTimings: true,
-                disableExtraction: process.env.NODE_ENV === 'development',
-              },
-            ],
-          ]),
-    ],
+                disableExtraction: process.env.NODE_ENV === 'development'
+              }
+            ]
+          ])
+    ]
   }
 }

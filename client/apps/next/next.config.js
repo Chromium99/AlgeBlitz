@@ -4,7 +4,7 @@ const { join } = require('path')
 
 const boolVals = {
   true: true,
-  false: false,
+  false: false
 }
 
 const disableExtraction =
@@ -45,38 +45,38 @@ const plugins = [
         return true
       }
     },
-    excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
-  }),
+    excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable']
+  })
 ]
 
 module.exports = function () {
   /** @type {import('next').NextConfig} */
   let config = {
     typescript: {
-      ignoreBuildErrors: true,
+      ignoreBuildErrors: true
     },
     modularizeImports: {
       '@tamagui/lucide-icons': {
-        transform: `@tamagui/lucide-icons/dist/esm/icons/{{kebabCase member}}`,
-        skipDefaultConversion: true,
-      },
+        transform: '@tamagui/lucide-icons/dist/esm/icons/{{kebabCase member}}',
+        skipDefaultConversion: true
+      }
     },
     transpilePackages: [
       'solito',
       'react-native-web',
       'expo-linking',
       'expo-constants',
-      'expo-modules-core',
+      'expo-modules-core'
     ],
     experimental: {
-      scrollRestoration: true,
-    },
+      scrollRestoration: true
+    }
   }
 
   for (const plugin of plugins) {
     config = {
       ...config,
-      ...plugin(config),
+      ...plugin(config)
     }
   }
 
