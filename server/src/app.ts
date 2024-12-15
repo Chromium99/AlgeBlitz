@@ -1,9 +1,9 @@
 import fastify from "fastify";
 import { routes } from "./routes/routes";
-import handleAuth from "./routes/authentication";
-import getQuestion from "./routes/getQuestion";
-import playMode from "./routes/playModes";
-import submitAnswer from "./routes/submitAnswer";
+// import handleAuth from "./routes/authentication";
+// import getQuestion from "./routes/getQuestion";
+// import playMode from "./routes/playModes";
+// import submitAnswer from "./routes/submitAnswer";
 
 // routes_data.displayRoutes();
 
@@ -16,17 +16,17 @@ import submitAnswer from "./routes/submitAnswer";
     return `listening at port ${PORT}`;
   });
 
-  // routes.forEach((route) => {
-  //   server.register(route);
-  // });
+  routes.forEach((route) => {
+    server.register(route);
+  });
 
-  server.register(getQuestion);
-  server.register(submitAnswer);
-  server.register(playMode);
-  server.register(handleAuth);
+  // server.register(getQuestion);
+  // server.register(submitAnswer);
+  // server.register(playMode);
+  // server.register(handleAuth);
 
-  server.addHook("onRoute", (routeOptions) => {
-    routeOptions.url;
+  server.addHook("onRoute", async (routeOptions) => {
+    await routeOptions.url;
     console.log(routeOptions.url);
   });
 

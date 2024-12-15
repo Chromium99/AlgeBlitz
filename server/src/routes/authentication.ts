@@ -29,6 +29,7 @@ export default async function handleAuth(server: FastifyInstance) {
           name: name,
           email: email,
           password: password,
+          // time_registered: Date.now(),
         };
 
         const new_user = await primsa_instance.user.create({

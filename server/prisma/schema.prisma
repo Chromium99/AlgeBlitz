@@ -10,7 +10,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  // url      = env("DATABASE_URL")
+  url      = "postgresql://ayandas:admin@localhost:5500/algeblitz?schema=public"
 }
 
 model questionInfoTable {
@@ -62,7 +63,7 @@ model User {
   email          String   @unique
   role           Role     @default(USER) // set default role to USER
   password       String
-  time_regisered DateTime
+  time_regisered DateTime @default(now()) // set to optional
 }
 
 enum Role {
