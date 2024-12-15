@@ -18,9 +18,9 @@ module.exports = {
         'custom-purple': 'var(--custom-purple)',
         'custom-dark-secondary': 'var(--custom-dark-secondary)',
         'custom-dark-primary': 'var(--custom-dark-primary)',
-        'custom-gray': 'var(--custom-gray)',
-      },
-    },
+        'custom-gray': 'var(--custom-gray)'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }

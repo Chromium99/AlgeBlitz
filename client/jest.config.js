@@ -3,10 +3,10 @@ const path = require('path')
 module.exports = {
   preset: 'jest-expo',
   setupFilesAfterEnv: [
-    '<rootDir>/jest.setup.js',
+    '<rootDir>/jest.setup.js'
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|tamagui|@expo/vector-icons)',
+    'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|tamagui|@expo/vector-icons)'
   ],
   testEnvironment: 'jsdom',
   globals: {
@@ -31,11 +31,11 @@ module.exports = {
     '^tamagui$': '<rootDir>/__tests__/__mocks__/tamagui.js',
     '\\.svg$': '<rootDir>/__mocks__/svgMock.js',
     '^app/(.*)$': '<rootDir>/packages/app/$1',
-    '^@my/ui/(.*)$': '<rootDir>/packages/ui/$1',
+    '^@my/ui/(.*)$': '<rootDir>/packages/ui/$1'
   },
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
     '^.+\\.tsx?$': 'ts-jest'
   },
   rootDir: '.'
-};
+}
