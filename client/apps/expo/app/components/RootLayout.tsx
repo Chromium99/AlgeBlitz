@@ -77,26 +77,26 @@ export function RootLayoutNav() {
             }}
           />
           <Stack.Screen
+            name="sso"
+            options={{
+              title: 'Single Sign On',
+            }}
+          />
+          <Stack.Screen
             name="(tabs)"
             options={{
               title: '',
-              headerShown: true,
+              headerShown: false,
             }}
           />
           <Stack.Screen
-            name="(login)"
+            name="login"
             options={{
               title: '',
               headerShown: false,
             }}
           />
-          <Stack.Screen
-            name="(auth)"
-            options={{
-              title: '',
-              headerShown: false,
-            }}
-          />
+
           <Stack.Screen
             name="user/[id]"
             options={{
@@ -105,12 +105,6 @@ export function RootLayoutNav() {
               animation: 'slide_from_right',
               gestureEnabled: true,
               gestureDirection: 'horizontal',
-            }}
-          />
-          <Stack.Screen
-            name="test"
-            options={{
-              title: 'testPage',
             }}
           />
         </Stack>

@@ -1,5 +1,9 @@
 import fastify from "fastify";
 import { routes } from "./routes/routes";
+import handleAuth from "./routes/authentication";
+import getQuestion from "./routes/getQuestion";
+import playMode from "./routes/playModes";
+import submitAnswer from "./routes/submitAnswer";
 
 // routes_data.displayRoutes();
 
@@ -12,17 +16,19 @@ import { routes } from "./routes/routes";
     return `listening at port ${PORT}`;
   });
 
-  routes.forEach((route) => {
-    server.register(route);
-  });
+  // routes.forEach((route) => {
+  //   server.register(route);
+  // });
+
+  server.register(getQuestion);
+  server.register(submitAnswer);
+  server.register(playMode);
+  server.register(handleAuth);
 
   server.addHook("onRoute", (routeOptions) => {
     routeOptions.url;
     console.log(routeOptions.url);
   });
-  // server.register(getQuestion);
-  // server.register(submitAnswer);
-  // server.register(playMode);
 
   // TODO : fix this parameter type usage
 

@@ -1,0 +1,7 @@
+GET http://[::1]:3000/auth/signup
+
+{
+    "name" : "Ayan",
+    "password" : "example123",
+    "email" : "example@123.com"
+}
