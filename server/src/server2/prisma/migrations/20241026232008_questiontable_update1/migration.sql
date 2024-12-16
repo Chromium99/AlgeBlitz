@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "QuestionTable" ALTER COLUMN "uid" DROP NOT NULL,
+ALTER COLUMN "userAnswer" DROP NOT NULL;

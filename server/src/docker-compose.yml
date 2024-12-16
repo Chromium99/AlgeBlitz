@@ -1,0 +1,21 @@
+version:'3'
+services:
+ server-1:
+  build: ./server1/app.ts
+  hostname: server_1
+  ports: 
+    - '3000:3000'
+
+  server-2:
+  build: ./server2/app.ts
+  hostname: server_2
+  ports: 
+    - '3400:3400'
+
+  nginx:
+    build: ./nginx
+    ports:
+      - '80:80'
+    depends_on:
+     - server-1
+     - server-2
