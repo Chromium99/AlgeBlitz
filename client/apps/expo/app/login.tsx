@@ -17,20 +17,30 @@ import React, { useState } from 'react'
 import { RenderingGoogleIcon } from './components/loginPageComponents/RenderingGoogle'
 import AppleIcon from './components/svgComponents/AppleIcon'
 import { RenderingEmailIllustration } from './components/loginPageComponents/RenderingEmailImage'
-
+import { Text_Component } from './components/core/TextComponent'
+import { RenderBackIcon } from './components/core/BackIcon'
 export default function Page() {
   const [modalVisible, setModalVisible] = useState(false)
   const [email, onChangeEmail] = React.useState('')
 
   return (
     <SafeAreaView className="flex-1 mx-auto mt-10">
-      <Text
+      {/* <Text
         style={{ fontFamily: 'bungee-inline' }}
         className="text-5xl mt-16 mb-10 text-primary-text-color mx-auto"
       >
         LOGIN
-      </Text>
+      </Text> */}
+      <RenderBackIcon tailwind_styling="w-4 h-4" />
+
+      <Text_Component
+        text_content="LOGIN"
+        tailwind_styling="text-5xl mt-16 mb-10 text-primary-text-color mx-auto"
+      />
       <TextInput
+        style={{
+          fontFamily: 'bungee-inline',
+        }}
         className="h-16 border p-5 rounded-md w-[350px] bg-white shadow-md"
         placeholder="Enter Your Email..."
         placeholderTextColor="gray"

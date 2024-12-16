@@ -64,7 +64,7 @@ export function RootLayoutNav() {
         <Stack
           screenOptions={{
             headerStyle: {
-              backgroundColor: 'white',
+              backgroundColor: '#e5e5e5',
             },
           }}
         >
@@ -79,7 +79,8 @@ export function RootLayoutNav() {
           <Stack.Screen
             name="sso"
             options={{
-              title: 'Single Sign On',
+              title: '',
+              headerShown: false,
             }}
           />
           <Stack.Screen

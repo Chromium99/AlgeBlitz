@@ -4,6 +4,7 @@ import { Button, SafeAreaView, Text, View, Pressable } from 'react-native'
 import { RenderLandingImage } from './components/landingPageComponents/RenderImage'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import { router } from 'expo-router'
+import { Text_Component } from './components/core/TextComponent'
 export default function Home() {
   const router = useRouter()
   return (
@@ -18,12 +19,10 @@ export default function Home() {
     <SafeAreaView className="bg-white flex-1 mx-auto mt-10">
       <RenderLandingImage />
       <View className=" flex-col mx-12">
-        <Text
-          style={{ fontFamily: 'bungee-inline' }}
-          className="text-5xl mt-5 mb-10 text-primary-text-color"
-        >
-          ALGEBLITZ
-        </Text>
+        <Text_Component
+          text_content="ALGEBLITZ"
+          tailwind_styling="text-5xl mt-5 mb-10 text-primary-text-color"
+        />
         <Text
           style={{
             fontFamily: 'bungee-inline',
@@ -34,7 +33,6 @@ export default function Home() {
         </Text>
         <Pressable
           className="bg-black h-20 rounded-3xl mt-10 active:opacity-50"
-          // TODO : look into potential fix for this
           onPress={() => router.push('/login')}
         >
           {({ pressed }) => (
