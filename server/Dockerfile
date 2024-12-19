@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y openssl
 
 # Set environment variables
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=5000
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -43,7 +43,7 @@ COPY --from=builder /usr/src/app/dist ./dist
 COPY --from=builder /usr/src/app/prisma ./prisma
 
 # Expose the port your Fastify app runs on
-EXPOSE 3000
+EXPOSE 5000
 
 # Start the application
 CMD ["npm", "start"]
