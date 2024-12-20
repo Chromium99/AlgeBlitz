@@ -1,0 +1,40 @@
+name: EAS Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "client/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "client/**"
+      - ".github/workflows/mobile_ci.yml"
+
+env:
+  WORKING_DIRECTORY: client/apps/expo # Specify the working directory for Expo app
+
+jobs:
+  build:
+    name: Install and build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: yarn # Use Yarn for dependency caching
+          cache-dependency-path: client/yarn.lock
+      - name: Install dependencies using Yarn Workspaces
+        run: yarn install --immutable
+      - name: Setup Expo and EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - name: Build on EAS
+        run: eas build --platform all --non-interactive --no-wait
