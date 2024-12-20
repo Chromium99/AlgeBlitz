@@ -18,14 +18,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourprojectsname.app"
+      "bundleIdentifier": "com.algeblitz.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.yourprojectsname.app"
+      "package": "com.algeblitz.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,7 +36,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "6c3501f7-090e-4f25-ba43-ea7e8b603afb"
+        "projectId": "9ca2416e-dac2-4991-bf9c-d40603bc4db1"
       }
     }
   }

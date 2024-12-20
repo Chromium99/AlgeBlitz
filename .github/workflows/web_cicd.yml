@@ -34,7 +34,7 @@ jobs:
         run: yarn install
 
       - name: Run tests
-        run: yarn test --if-present
+        run: yarn test:jest --if-present
 
       - name: Build Project Artifacts
         run: yarn web:prod
