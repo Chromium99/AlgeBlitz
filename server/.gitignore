@@ -2,3 +2,5 @@
 /dist
 yarn.lock
 /.env
+.env
+/prisma/migrations/

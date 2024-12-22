@@ -14,26 +14,57 @@ datasource db {
 }
 
 model questionInfoTable {
-  id Int @id @default(autoincrement())
-  pid String?
-  category String
-  difficulty String
-  type String
-  uid String?
-  questionName String
-  choices String[]
+  id            Int      @id @default(autoincrement())
+  pid           String?
+  category      String
+  difficulty    String
+  type          String
+  uid           String   @unique
+  questionName  String
+  choices       String[]
   correctAnswer String
-  
 }
-model problemSolvedTable{
-  id Int @id @default(autoincrement())
-  uid String?
-  pid String?
-  userAnswer String?
-  category     String
-  difficulty   String
-  type         String
-  questionName String
-  choices      String[]
 
+model problemSolvedTable {
+  id         Int     @id @default(autoincrement())
+  uid        String  @unique
+  pid        String?
+  userAnswer String?
+}
+
+model blitz {
+  id    Int     @id @default(autoincrement())
+  uid   String  @unique
+  score String?
+}
+
+model survival {
+  id    Int     @id @default(autoincrement())
+  uid   String  @unique
+  score String?
+}
+
+model rampUp {
+  id    Int     @id @default(autoincrement())
+  uid   String  @unique
+  score String?
+}
+
+model puzzle {
+  id    Int     @id @default(autoincrement())
+  uid   String  @unique
+  score String?
+}
+
+model sample {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(255)
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model User {
+  id        String  @id @default(cuid())
+  email     String  @unique
+  name      String?
+  createdAt DateTime @default(now())
 }
